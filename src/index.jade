@@ -1,0 +1,435 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Advanced JS
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
+
+  body
+
+    article
+
+      section
+        h1 JavaScript Patterns
+        h3 자바스크립트 초급, 그 이후
+        h3 이종은
+      
+      section
+        img(src="./images/jong.png",width="150px").circle
+        br
+        h2 이종은
+        ul.center.no-bullet
+          li Yo Studio
+          li 
+            i.ion-heart.red
+            |  JavaScript
+          li Titanium (tidev.kr / NIPA open frontier)
+      section
+        //- img(src="./images/one_frankieleon.jpg",width="500px")
+        //- 딱 하나만 배우겠다면 배워야 하는 하나
+        h2.fa-4x☝🏼 
+        h3 ________ is the one programming language 
+          br
+          | to learn if you can learn only one
+        p.comment
+          | ref :
+          //- a(href="") flickr/frankieleon
+          //- | ,
+          a(href="http://www.itworld.com/article/2868413/javascript-is-the-one-programming-language-to-learn-if-you-can-learn-only-one.html")
+            |  itworld.com/article/2868413/
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h1 JavaScript
+      
+      section
+        h2.fa-3x 😘 or 😠
+        
+      section
+        h2 JS가 싫은 이유
+        ul
+          li 구린 부분이 있다
+          li DOM은 형편없다
+          li Java, C#, C++, Phython, Ruby.. 가 아니다
+          li 그런데도 많이 쓰인다
+        p.comment
+          a(href="https://www.youtube.com/watch?v=lTWGoL1N-Kc")
+            | ref : Douglas Crockford: Really. JavaScript.
+      section
+        h2 The World's Most Misunderstood Programming Language
+      
+      section
+        h2.bullet 오늘은
+          br
+          span.bullet 애매한 것을 깨우치는 시간
+      
+      section
+        h1.bullet JS는 어떻게 동작하나요?
+        h3.bullet 누구도 알려주지 않았다
+          
+      section
+        h2.bullet JS 사용법
+        h3.bullet 보다는
+        h2.bullet JS 이해 ☀️☀️
+        
+      section
+        h2.fa-3x 
+        h2 질문은 언제든지 환영
+        
+      section
+        h2 얘깃거리
+        ul
+          li 몸풀기
+          li 스코프
+          li 클로져
+          li 이벤트 루프
+          li 콜백 패턴
+          li 객체지향
+          li 유용한 도구 
+      
+      
+          
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h1.fa-3x 🏃
+        h1 몸풀기
+      
+      //- section
+        h2  JavaScript is <br/>a functional language <br/>with dynamic obejcts <br/>and familiar syntax
+      
+      section
+        h2.bullet JS는 객체지향 언어다?
+        h3.bullet 네! 5개 빼고 전부 객체이다.
+      
+      section
+        h2.bullet 객체
+        h3.bullet key - value 쌍의 모음
+        pre.bullet
+          code.language-javascript.
+            var obj = {
+              title : "Advanced JS",
+              attendee : 30,
+              isBad : function(){
+                return false;
+              }
+            }
+      
+      section
+        h2 원시값
+        h3 primitive type
+        ul
+          li string
+          li number
+          li boolean
+          li null
+          li undefined
+        br.bullet
+        
+      
+      section
+        h2 Primitive Wrapper
+        p.f07.bullet
+          i.ion-android-warning.red
+          |  string, number, boolean은 primitive wrapper를 통해 쉽게 객체로 변환
+        pre
+          code.language-javascript.
+            "I am a boy".length;
+            (3).toFixed(2);
+            true.toString();
+            
+                
+      section
+        h2 복사
+        pre.f09
+          code.language-javascript.
+            var p = 1;
+            var copyOfP = p;
+            p = 3;
+            console.log(copyOfP);
+
+            var myObject = {};
+            var copyOfMyObject = myObject;
+            myObject.foo = 'bar';
+            console.log(copyOfMyObject.foo);
+        a(data-bespoke-run)
+          | Run!
+          
+      section
+        h2 비교 연산자 == vs ===
+        pre.line-numbers.f08
+          code.language-javascript.
+            var one= 1, oneString = '1' , t = true;
+
+            console.log(one == oneString);
+            console.log(one == t);
+            console.log(oneString == t);
+
+            console.log(one === oneString);
+            console.log(one === t);
+            console.log(oneString === t);
+        a(data-bespoke-run)
+          | Run!
+      
+      section
+        h2. 객체 속성 접근방법
+        ul.no-bullet.f08
+          li object['property_name']
+          li object.property_name
+        pre
+          code.language-javascript.
+            var obj = {
+                name : 'MyObject'
+            };
+            var a = 'name';
+            console.log(obj.name);
+            console.log(obj["name"]);
+            console.log(obj[a]);
+        a(data-bespoke-run)
+          | Run!
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h1 이벤트 루프
+        h2 Event Loop
+      
+      section
+        h2.bullet JS는 어떻게 동작하는가? <br/>(Runtime Concept)
+        h3.bullet 이론적인 모델, 실제로 구현은 엔진에 따라 다르게 많이 최적화되어 있음
+      
+      section
+        img(src="./images/eventloop.svg",width="500px")
+        p.comment
+          a(href="https://developer.mozilla.org/ko/docs/Web/JavaScript/EventLoop") ref: dev.mozilla.org
+      
+      section
+        h2 
+        table
+          tr
+            td
+              pre.f07
+                code.language-javascript.
+                  function multiply(a,b){
+                    reutrn a*b;
+                  }
+                  
+                  function square(x){
+                    return multiply(x,x);
+                  }
+                  
+                  square(2);
+            td(style="border-right:1px solid white;width:20px")
+            td(style="width:20px")
+            td
+              img(src="./images/call_stack.svg")
+                
+      section
+        h2 call stack
+        h3 one thread == one call stack == one thing at a time
+        p.comment
+          a(href="http://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html#transcript") 2014.jsconf.eu philip
+      
+      section
+        pre.f06
+          code.language-javascript.
+            function multiply(a,b){
+              return a*b;
+            }
+            
+            function square(x){
+              var cnt = 0, cnt2=0;
+              var temp = 0.1;
+              while(cnt++<1000000000){
+                while(cnt2++<3000000000){
+                  temp=+0.1;
+                }
+              }
+              return multiply(x,x);
+            }
+            
+            square(2);
+            console.log('DONE!');
+      
+      section
+        h2 JS Runtime은 동시에 두가지 연산을 못해요!
+        h3 하나가 완료될때 까지 다른 것들은 대기 (Block)
+      
+          
+      section
+        h2 
+        table
+          tr
+            td
+              pre.f07
+                code.language-javascript.
+                  function f(){
+                    console.log('f - done');
+                  }
+                  
+                  function g(){
+                    setTimeout(function(){
+                      console.log('g - timeout')
+                    },3000);
+                    f();
+                  }
+                  
+                  g();
+            td(style="border-right:1px solid white;width:20px")
+            td(style="width:20px")
+            td
+              img(src="./images/eventloop_blank.svg")
+      
+      section
+        h2 
+        table
+          tr
+            td
+              pre.f07
+                code.language-javascript.
+                  function f(){
+                    console.log('f - done');
+                  }
+                  
+                  function g(){
+                    $.ajax({
+                      url: "test.html"
+                    }).done(function() {
+                      console.log('g - ajax - done')
+                    });
+                    f();
+                  }
+                  
+                  g();
+            td(style="border-right:1px solid white;width:20px")
+            td(style="width:20px")
+            td
+              img(src="./images/eventloop_blank.svg")
+      section
+        h2 브라우저에서의 동작
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h1 스코프
+      
+      section
+        h2 스코프 (Scope)?
+        ul.bullet
+          li.bullet  유효범위
+          li.bullet  무언가를 찾을 때 들여다 보는 곳
+      
+      section
+        h2 전역 변수, 지역 변수
+        pre
+          code.language-javascript.
+            var g = 3;
+            function(){
+              var h = 4;
+            }
+
+      section
+        h2 'var' scope 결정자
+      
+      section
+        h2 단지 Function scope    
+          
+      section
+        h2 Q. global? local?
+        pre
+          code.language-javascript.
+            function foo() {
+              var a = b = 0;
+            }
+      
+      section
+        h2 Scope Chain
+        h1
+          i.fa-4x.ion-link
+
+      section
+        //- h2 Q. global? local?
+        pre
+          code.language-javascript.
+
+      section
+        h2 this
+        ul
+          li scope에 자동으로 들어가는 변수
+          li 해당 함수를 실행시킨 Object 
+      
+      section
+        pre.f07
+          code.language-javascript.
+            console.log(this);
+            
+      section
+        pre.f07
+          code.language-javascript.
+            function(){
+              console.log(this);
+            }
+            
+      section
+        pre.f07
+          code.language-javascript.
+            var value = 'global';
+            var obj = {
+              value : 'local',
+              foo : function(){
+                console.log( this.value );
+              }
+            }
+            obj.foo();
+      
+      section
+        pre.f07
+          code.language-javascript.
+            function MyObj(){
+              console.log(this);
+            }
+            var obj = new MyObj();
+            
+      section
+        h2 Q. 결과는?
+        pre.f07
+          code.language-javascript.
+            var value = 'global';
+            var obj = {
+              value : 'local',
+              foo : function(){
+                console.log( this.value );
+              }
+            }
+            var foo2 = obj.foo;
+            foo2();
+            
+      section
+        h2 예외 : call, apply 
+        pre.f07
+          code.language-javascript.
+            var value = 'global';
+            var obj = {
+              value : 'local',
+              foo : function(){
+                console.log( this.value );
+              }
+            }
+            var foo2 = obj.foo;
+            foo2.call(obj);
+            foo2.apply(obj);
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h1 클로저
+        
+      section
+        h2 strict mode
+        h3 더 많은 예외를 발생시켜 <br/>코딩실수나 안전하지 않은 방식, <br/>혼란스러운 방식 원천 차단
+        
+      //- section(data-bespoke-hash='named-route')
+      //-   h2 Named Route
+      //-   h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
+      //-   p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
+      //- 
+      //- section.emphatic-text(data-bespoke-backdrop='emphatic')
+      //-   h2 Emphatic Slide!
+      //-   h3 Powered by <a href="https://github.com/markdalgleish/bespoke-backdrop">bespoke-backdrop</a>
+
+    script(src='build/build.js')
