@@ -14,8 +14,8 @@ html
     article
 
       section
-        h1 JavaScript Patterns
-        h3 자바스크립트 초급, 그 이후
+        h1 JavaScript 이해하기
+        h3 : 자바스크립트 초급, 그 이후
         h3 이종은
       
       section
@@ -31,7 +31,7 @@ html
       section
         //- img(src="./images/one_frankieleon.jpg",width="500px")
         //- 딱 하나만 배우겠다면 배워야 하는 하나
-        h2.fa-4x☝🏼 
+        h2.fa-5x☝ 
         h3 ________ is the one programming language 
           br
           | to learn if you can learn only one
@@ -46,7 +46,10 @@ html
         h1 JavaScript
       
       section
-        h2.fa-3x 😘 or 😠
+        h2.fa-3x
+          i.ion-happy
+          |  or 
+          i.ion-sad
         
       section
         h2 JS가 싫은 이유
@@ -80,7 +83,10 @@ html
       section
         h2.bullet JS 사용법
         h3.bullet 보다는
-        h2.bullet JS 이해 ☀️☀️
+        h2.bullet JS 이해 
+          i.ion-android-sunny.yellow
+          |  
+          i.ion-android-sunny.yellow
         
       section
         h2.bullet 왜 그런지 모르지만 저렇게 쓰면 되는구나
@@ -93,32 +99,35 @@ html
         h2.fa-3x 
         h2 질문은 언제든지 환영
         
-      section
+      section(data-bespoke-backdrop='emphatic',data-bespoke-hash='content')
         h2 얘깃거리
         ul
           li 
-            a(href="#wrapup") 몸풀기
-          li 
-            a(href="#scope") 스코프
+            a(href="#warmup") 몸풀기
           li 
             a(href="#event") 이벤트 루프
+          li 
+            a(href="#scope") 스코프
+          li
+            a(href="#hoisting") hoisting
           li
             a(href="#this") this
           li
-            a(href="#hoisting") hoisting
+            a(href="#memory") 메모리
           li 
             a(href="#closure") 클로져
           li 
-            a(href="#callback") 콜백 패턴
-          li 
             a(href="#oop") 객체지향
+          //- li 
+          //-   a(href="#callback") 콜백 패턴
           li 
             a(href="#tips") 기타 Tips
       
       
           
       section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='warmup')
-        h1.fa-3x 🏃
+        h1.fa-3x
+          i.ion-ios-body
         h1 몸풀기
       
       //- section
@@ -305,7 +314,7 @@ html
       
       section
         h2 "Run-to-complete"
-        h3 한번 시작하면 끝을 봐야한다!
+        h3 한번 시작하면 끝을 봐야한다!<br/>중간에 의도적으로 sleep하고 다른 일을 할 수 없다.
         
       section
         h2.bullet JS Runtime은 동시에 두가지 연산을 못해요?
@@ -858,7 +867,7 @@ html
             }
             
             //방법 2-1
-            var MYAPP = MYAPP || {}''
+            var MYAPP = MYAPP || {};
             
       section
         h2 실습 : 비공개로 만들기
@@ -875,7 +884,7 @@ html
                       return this.name;
                     }
                   }
-                  console.log(myobj.name);
+                  console.log(myModule.name);
             td(style="border-right:1px solid white")
             td
               a.run_code(data-bespoke-run) RUN
@@ -1039,8 +1048,14 @@ html
           
       section
         h2 strict mode
+        pre
+          code.language-javascript
+            "use strict"
         h3 더 많은 예외를 발생시켜 <br/>코딩실수나 안전하지 않은 방식, <br/>혼란스러운 방식 원천 차단
-      
+        p.comment-text
+          a(href="http://blog.aliencube.org/ko/2014/01/02/reasons-behind-using-strict-mode-while-coding-javascript/") ref1
+          | ,  
+          a(href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/") ref2: ejohn.org
       section
         h2 setInterval의 비밀?
         a.run_code(data-bespoke-run) RUN
@@ -1066,6 +1081,17 @@ html
             | , 
             a(href="https://www.google.com/events/io/io14videos/81c71952-6cbf-e311-b297-00155d5066d7") I/O 2014 
       
+      section
+        h2 참고 자료
+        h3 인용에 해당할 경우는 각 페이지 하단 우측에 링크를 넣었습니다. <br/> 그외 참고자료는 아래와 같습니다.
+        ul
+          li 
+            a(href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=38913750")  자바스크리브 닌자 비급 (Screcrets of the JavaScript Ninja)
+          li
+            a(href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=13680905")  자바스크립트 코딩 기법과 핵심 패턴 (JavaScript Patterns)
+          li
+            a(href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=28730459")    자바스크립트를 깨우치다
+          
       section
         h1.bullet 감사합니다.
         img.bullet(src="http://www.reactiongifs.com/wp-content/uploads/2013/10/thanks.gif")

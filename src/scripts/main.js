@@ -10,7 +10,7 @@ var bespoke = require('bespoke'),
   scale = require('bespoke-scale'),
   hash = require('bespoke-hash'),
   progress = require('bespoke-progress'),
-  forms = require('bespoke-forms'),
+  // forms = require('bespoke-forms'),
   run = require('bespoke-run/lib/bespoke-run.js');
 
 // Bespoke.js
@@ -25,7 +25,7 @@ bespoke.from('article', [
   scale(),
   hash(),
   progress(),
-  forms(),
+  // forms(),
   run()
   // bespoke.plugins.run()
 ]);
