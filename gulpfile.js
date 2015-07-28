@@ -20,6 +20,19 @@ var pkg = require('./package.json'),
   path = require('path'),
   isDist = process.argv.indexOf('serve') === -1;
 
+var orgJade = require('jade');
+
+orgJade.filters.markup = function( block ) {
+    return block
+        .replace( /&/g, '&amp;'  )
+        .replace( /</g, '&lt;'   )
+        .replace( />/g, '&gt;'   )
+        .replace( /"/g, '&quot;' )
+        .replace( /#/g, '&#35;'  )
+        .replace( /\\/g, '\\\\'  )
+        .replace( /\n/g, '\\n'   );
+}
+
 gulp.task('js', ['clean:js'], function() {
   return gulp.src('src/scripts/main.js')
     .pipe(isDist ? through() : plumber())
@@ -33,7 +46,8 @@ gulp.task('js', ['clean:js'], function() {
 gulp.task('html', ['clean:html'], function() {
   return gulp.src('src/index.jade')
     .pipe(isDist ? through() : plumber())
-    .pipe(jade({ pretty: true }))
+    .pipe(jade({ jade: orgJade, 
+pretty: true }))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());

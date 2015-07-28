@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Test</title>
+</head>
+<body>
+    <Button >Id:0</Button>
+    <Button >Id:1</Button>
+    <Button >Id:2</Button>
+    <Button >Id:3</Button>
+</body>
+<script>
+var nodes = document.getElementsByTagName('button');
+for (var i = 0; i < nodes.length; i++) {
+   nodes[i].addEventListener('click', function() {
+      console.log('You clicked element #' + i);
+   });
+}
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Test</title>
+</head>
+<body>
+    <Button id="btn">AAAA</Button>
+</body>
+<script>
+var cnt = 0;
+setInterval(function(){
+  cnt++;
+  console.log(cnt);
+  console.log(new Date().toString());
+},1000);
+
+document.getElementById('btn').onclick=function(){
+  var tmp=0;
+  for(var i=0;i<10000;i++){
+    for(var j=0;j<10000;j++){
+      tmp+=0.1;
+    }
+  }
+};
+</script>
+</html>

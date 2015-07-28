@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Test</title>
+</head>
+<body>
+
+</body>
+<script>
+function multiply(a,b){
+  throw new Error();
+  return a*b;
+}
+
+function square(x){
+  return multiply(x,x);
+}
+
+square(2);
+</script>
+</html>

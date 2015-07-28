@@ -62,6 +62,13 @@ html
         h2 The World's Most Misunderstood Programming Language
       
       section
+        img(src="./images/youdontknow.jpg",width="300px")
+      
+      section
+        img(src="./images/idontknow.png",width="400px")
+        h3 Kyle Simpson
+          
+      section
         h2.bullet 오늘은
           br
           span.bullet 애매한 것을 깨우치는 시간
@@ -69,11 +76,18 @@ html
       section
         h1.bullet JS는 어떻게 동작하나요?
         h3.bullet 누구도 알려주지 않았다
-          
+      
       section
         h2.bullet JS 사용법
         h3.bullet 보다는
         h2.bullet JS 이해 ☀️☀️
+        
+      section
+        h2.bullet 왜 그런지 모르지만 저렇게 쓰면 되는구나
+          i.fa.fa-ban.red.fa-4x.bullet(style="position:absolute;left:280px;top:120px")
+        h1  
+        h1   
+        h2.bullet 아! 그렇기 때문에 저렇게 써야 하는구나!
         
       section
         h2.fa-3x 
@@ -82,17 +96,28 @@ html
       section
         h2 얘깃거리
         ul
-          li 몸풀기
-          li 스코프
-          li 클로져
-          li 이벤트 루프
-          li 콜백 패턴
-          li 객체지향
-          li 유용한 도구 
+          li 
+            a(href="#wrapup") 몸풀기
+          li 
+            a(href="#scope") 스코프
+          li 
+            a(href="#event") 이벤트 루프
+          li
+            a(href="#this") this
+          li
+            a(href="#hoisting") hoisting
+          li 
+            a(href="#closure") 클로져
+          li 
+            a(href="#callback") 콜백 패턴
+          li 
+            a(href="#oop") 객체지향
+          li 
+            a(href="#tips") 기타 Tips
       
       
           
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='warmup')
         h1.fa-3x 🏃
         h1 몸풀기
       
@@ -106,6 +131,7 @@ html
       section
         h2.bullet 객체
         h3.bullet key - value 쌍의 모음
+        a.run_code(data-bespoke-run) RUN
         pre.bullet
           code.language-javascript.
             var obj = {
@@ -129,19 +155,22 @@ html
         
       
       section
-        h2 Primitive Wrapper
+        span.bullet
+        h2.bullet Primitive Wrapper
         p.f07.bullet
           i.ion-android-warning.red
           |  string, number, boolean은 primitive wrapper를 통해 쉽게 객체로 변환
+        a.run_code(data-bespoke-run) RUN
         pre
           code.language-javascript.
             "I am a boy".length;
             (3).toFixed(2);
             true.toString();
-            
+        
                 
       section
         h2 복사
+        a.run_code(data-bespoke-run) RUN
         pre.f07
           code.language-javascript.
             var p = 1;
@@ -153,11 +182,11 @@ html
             var copyOfMyObject = myObject;
             myObject.foo = 'bar';
             console.log(copyOfMyObject.foo);
-        //- a(data-bespoke-run)
-        //-   | Run!
+        
           
       section
         h2 비교 연산자 == vs ===
+        a.run_code(data-bespoke-run) RUN
         pre.line-numbers.f08
           code.language-javascript.
             var one= 1, oneString = '1' , t = true;
@@ -191,9 +220,10 @@ html
       
       section
         h2 여는 중괄호의 위치
+        a.run_code(data-bespoke-run) RUN
         pre.f07
           code.language-javascript.
-            function f(){
+            function f1(){
               return {
                 name: 'jong'
               };
@@ -206,7 +236,10 @@ html
               };
             }
             
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
+            console.log(f1());
+            console.log(f2());
+            
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='event')
         h1 이벤트 루프
         h2 Event Loop
       
@@ -224,10 +257,11 @@ html
         table
           tr
             td
+              a.run_code(data-bespoke-run) RUN
               pre.f07
                 code.language-javascript.
                   function multiply(a,b){
-                    reutrn a*b;
+                    return a*b;
                   }
                   
                   function square(x){
@@ -248,7 +282,8 @@ html
           a(href="http://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html#transcript") 2014.jsconf.eu philip
       
       //- section
-      //-   pre.f06
+      //-   a.run_code(data-bespoke-run) RUN
+        pre.f06
       //-     code.language-javascript.
       //-       function multiply(a,b){
       //-         return a*b;
@@ -282,6 +317,7 @@ html
         table
           tr
             td
+              a.run_code(data-bespoke-run) RUN
               pre.f06
                 code.language-javascript.
                   document.getElementById('myBtn').onclick = function(){
@@ -307,6 +343,7 @@ html
         table
           tr
             td
+              a.run_code(data-bespoke-run) RUN
               pre.f06
                 code.language-javascript.
                   document.getElementById('myBtn').onclick = function(){
@@ -314,7 +351,7 @@ html
                   };
                   
                   function g(){ 
-                    - 엄청 오래 걸리는 작업 - 
+                    doSomething(); // 엄청 오래 걸리는 작업
                   }
                   
                   g();
@@ -326,6 +363,7 @@ html
       
           
       section
+        a.run_code(data-bespoke-run) RUN
         pre.f07
           code.language-javascript.
             setTimeout(function(){
@@ -338,6 +376,7 @@ html
         table
           tr
             td
+              a.run_code(data-bespoke-run) RUN
               pre.f07
                 code.language-javascript.
                   function f(){
@@ -357,6 +396,7 @@ html
             td
               img(src="./images/eventloop_blank.svg")
       section
+        a.run_code(data-bespoke-run) RUN
         pre.f07
           code.language-javascript.
             setTimeout(function(){
@@ -373,6 +413,7 @@ html
         table
           tr
             td
+              a.run_code(data-bespoke-run) RUN
               pre.f07
                 code.language-javascript.
                   function f(){
@@ -394,8 +435,218 @@ html
             td
               img(src="./images/eventloop_blank.svg")
       
+      
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='scope')
+        h1 스코프
+        h2 (scope)
+      
       section
-        h2 JS의 메모리
+        h2 스코프 (Scope)?
+        ul.bullet
+          li.bullet  유효범위
+          li.bullet  무언가를 찾을 때 들여다 보는 곳
+      
+      section
+        h2 전역 변수, 지역 변수
+        a.run_code(data-bespoke-run) RUN
+        pre
+          code.language-javascript.
+            var g = 3;
+            function f(){
+              var h = 4;
+            }
+
+      section
+        h2 'var' scope 결정자
+      
+      section
+        h2 단지 Function scope    
+          
+      section
+        h2 어떻게 생겼는지 그려봅시다.
+        a.run_code(data-bespoke-run) RUN
+        pre
+          code.language-javascript.
+            var msg = 'global';
+            var gmsg = 'wow';
+            function f(){
+              var msg = 'local';
+              return msg + gmsg;
+            }
+            f();
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='hoisting')
+        h1 호이스팅
+        h2 (Hoisting)
+        
+      section
+        h2 기명함수의 호이스팅
+        a.run_code(data-bespoke-run) RUN
+        pre 
+          code.language-javascript.
+            f();
+            function f(){
+              console.log('please');
+            };
+            
+      section
+        h2 익명함수의 호이스팅
+        a.run_code(data-bespoke-run) RUN
+        pre
+          code.language-javascript.
+            f();
+            var f = function (){
+              console.log('please');
+            };
+      
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre
+          code.language-javascript.
+            function f(){
+              console.log(a);
+              return;
+            }
+      
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre
+          code.language-javascript.
+            function f(){
+              console.log(a);
+              return;
+              var a=3;
+            }
+      
+      section
+        h2 선언문 var은 항상 상단에 모아라
+        
+      section
+        h2 Q. global? local?
+        a.run_code(data-bespoke-run) RUN
+        pre
+          code.language-javascript.
+            function foo() {
+              var a = b = 0;
+            }
+            
+      section
+        h2 Scope Chain
+        h1
+          i.fa-4x.ion-link
+
+      section
+        h2 gmsg는 어떻게 찾은거지?
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            var msg = 'global';
+            var gmsg = 'wow';
+            function f(){
+              var msg = 'local';
+              return msg + gmsg;
+            }
+            f();
+      
+      section
+        h2 찾는데 걸리는 시간
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            var msg = 'global';
+            var gmsg = 'wow';
+            function f(){
+              var msg = 'local';
+              for(var i=0;i<100000;i++){
+                msg+=gmsg;
+              }
+              return msg;
+            }
+            f();
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='this')
+        h2 this
+        h3 (누구냐 넌?)
+      
+      section
+        ul
+          li scope에 자동으로 들어가는 변수
+          li 해당 함수를 실행시킨 Object 
+      
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            console.log(this);
+            
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            function(){
+              console.log(this);
+            }
+            
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            var value = 'global';
+            var obj = {
+              value : 'local',
+              foo : function(){
+                console.log( this.value );
+              }
+            }
+            obj.foo();
+      
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            function MyObj(){
+              console.log(this);
+            }
+            var obj = new MyObj();
+            
+      section
+        h2 Q. 결과는?
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            var value = 'global';
+            var obj = {
+              value : 'local',
+              foo : function(){
+                console.log( this.value );
+              }
+            }
+            var foo2 = obj.foo;
+            foo2();
+            
+      section
+        h2 예외 : call, apply 
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            var value = 'global';
+            var obj = {
+              value : 'local',
+              foo : function(){
+                console.log( this.value );
+              }
+            }
+            var foo2 = obj.foo;
+            foo2.call(obj);
+            foo2.apply(obj);
+
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='memory')
+        h1 메모리 GC
+        
+      section
+        h2 메모리 관리 기본 3단계
         ol.bullet
           li.bullet 필요할 때 할당한다.
           li.bullet 사용한다. (읽기, 쓰기)
@@ -404,13 +655,32 @@ html
           a(href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management") MDN
       
       section
-        h2 gabage collector
+        h2 JS gabage collector
+        ul.bullet
+          li.bullet 우리가 임의로 동작시킬 수 없다
+          li.bullet 브라우저가 알아서 한다
+        img(src="./images/fig2.jpg").bullet
+        p.comment-text
+          a(href="http://www.html5rocks.com/ko/tutorials/speed/static-mem-pools/") ref: html5rocks
+            
+      section
+        h2 gabage collector 동작 방식
         ul.bullet
           li.bullet ref count
           li.bullet mark and swipe
       
       section
+        a.run_code(data-bespoke-run) RUN
+        pre.f09
+          code.language-javascript.
+            function f(){
+              var arr = new Array(1000);
+            }
+            f();
+            
+      section
         h2 ref count의 한계
+        a.run_code(data-bespoke-run) RUN
         pre.f08
           code.language-javascript.
             function f(){
@@ -428,201 +698,13 @@ html
         h2 mark and swipe
         h3 닿을 수 없는 오브젝트 = 더 이상 필요 없는 오브젝트
         
-
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h1 스코프
-      
-      section
-        h2 스코프 (Scope)?
-        ul.bullet
-          li.bullet  유효범위
-          li.bullet  무언가를 찾을 때 들여다 보는 곳
-      
-      section
-        h2 전역 변수, 지역 변수
-        pre
-          code.language-javascript.
-            var g = 3;
-            function f(){
-              var h = 4;
-            }
-
-      section
-        h2 'var' scope 결정자
-      
-      section
-        h2 단지 Function scope    
-          
-      section
-        h2 어떻게 생겼는지 그려봅시다.
-        pre
-          code.language-javascript.
-            var msg = 'global';
-            var gmsg = 'wow';
-            function f(){
-              var msg = 'local';
-              return msg + gmsg;
-            }
-            f();
-            
-      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='this')
-        h2 this
-        h3 (누구냐 넌?)
-      
-      section
-        ul
-          li scope에 자동으로 들어가는 변수
-          li 해당 함수를 실행시킨 Object 
-      
-      section
-        pre.f07
-          code.language-javascript.
-            console.log(this);
-            
-      section
-        pre.f07
-          code.language-javascript.
-            function(){
-              console.log(this);
-            }
-            
-      section
-        pre.f07
-          code.language-javascript.
-            var value = 'global';
-            var obj = {
-              value : 'local',
-              foo : function(){
-                console.log( this.value );
-              }
-            }
-            obj.foo();
-      
-      section
-        pre.f07
-          code.language-javascript.
-            function MyObj(){
-              console.log(this);
-            }
-            var obj = new MyObj();
-            
-      section
-        h2 Q. 결과는?
-        pre.f07
-          code.language-javascript.
-            var value = 'global';
-            var obj = {
-              value : 'local',
-              foo : function(){
-                console.log( this.value );
-              }
-            }
-            var foo2 = obj.foo;
-            foo2();
-            
-      section
-        h2 예외 : call, apply 
-        pre.f07
-          code.language-javascript.
-            var value = 'global';
-            var obj = {
-              value : 'local',
-              foo : function(){
-                console.log( this.value );
-              }
-            }
-            var foo2 = obj.foo;
-            foo2.call(obj);
-            foo2.apply(obj);
-
-      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='hoisting')
-        h1 호이스팅
-        h2 (Hoisting)
-        
-      section
-        h2 기명함수의 호이스팅
-        pre 
-          code.language-javascript.
-            f();
-            function f(){
-              console.log('please');
-            };
-            
-      section
-        h2 익명함수의 호이스팅
-        pre
-          code.language-javascript.
-            f();
-            var f = function (){
-              console.log('please');
-            };
-      
-      section
-        pre
-          code.language-javascript.
-            function f(){
-              console.log(a);
-              return;
-            }
-      
-      section
-        pre
-          code.language-javascript.
-            function f(){
-              console.log(a);
-              return;
-              var a=3;
-            }
-      
-      section
-        h2 선언문 var은 항상 상단에 모아라
-      
-      section
-        h2 Q. global? local?
-        pre
-          code.language-javascript.
-            function foo() {
-              var a = b = 0;
-            }
-            
-      section
-        h2 Scope Chain
-        h1
-          i.fa-4x.ion-link
-
-      section
-        h2 gmsg는 어떻게 찾은거지?
-        pre.f07
-          code.language-javascript.
-            var msg = 'global';
-            var gmsg = 'wow';
-            function f(){
-              var msg = 'local';
-              return msg + gmsg;
-            }
-            f();
-      
-      section
-        h2 찾는데 걸리는 시간
-        pre.f07
-          code.language-javascript.
-            var msg = 'global';
-            var gmsg = 'wow';
-            function f(){
-              var msg = 'local';
-              for(var i=0;i<100000;i++){
-                msg+=gmsg;
-              }
-              return msg;
-            }
-            f();
-
       
       
       section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='closure')
         h1 클로저
         
       section
+        a.run_code(data-bespoke-run) RUN
         pre.f07
           code.language-javascript.
             var outerValue = 'ninja';
@@ -643,10 +725,25 @@ html
             later();
       
       section
+        h2.bullet 실습 1. 손으로 그려보면서 결과 예측
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            var nodes = document.getElementsByTagName('button');
+            for (var i = 0; i < nodes.length; i++) {
+               nodes[i].addEventListener('click', function() {
+                  console.log('You clicked element #' + i);
+               });
+            }
+        
+        h2.bullet 실습 2. 정상적으로 동작하도록 
+      
+      section
         h2 callback이란?
       
       section
         h2 callback HELL
+        a.run_code(data-bespoke-run) RUN
         pre.f07
           code.language-javascript.
             step1(function (value1) {
@@ -661,6 +758,7 @@ html
       
       section
         h2 promise
+        a.run_code(data-bespoke-run) RUN
         pre.f07
           code.language-javascript.
             Q.fcall(promisedStep1)
@@ -674,20 +772,303 @@ html
                 // 위 step에서 발생하는 모든 에러 처리
             })
             .done();
-            
       
-      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='closure')
+      section
+        h2 promise - Q
+        a.run_code(data-bespoke-run) RUN
+        pre.f04
+          code.language-javascript.
+            function requestOkText(url) {
+                return Q.Promise(function(resolve, reject, notify) {
+                    var request = new XMLHttpRequest();
+
+                    request.open("GET", url, true);
+                    request.onload = onload;
+                    request.onerror = onerror;
+                    request.onprogress = onprogress;
+                    request.send();
+
+                    function onload() {
+                        if (request.status === 200) {
+                            resolve(request.responseText);
+                        } else {
+                            reject(new Error("Status code was " + request.status));
+                        }
+                    }
+
+                    function onerror() {
+                        reject(new Error("Can't XHR " + JSON.stringify(url)));
+                    }
+
+                    function onprogress(event) {
+                        notify(event.loaded / event.total);
+                    }
+                });
+            }
+        p.comment-text
+          a(href="http://documentup.com/kriskowal/q/") ref: Q
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='oop')
         h1 Object Oriented
         h2 (JS로 클래스)
       
       section
+        h2 글로벌을 더립히지 마라
+        a.run_code(data-bespoke-run) RUN
+        pre.f08
+          code.language-javascript.
+            function Parent() {}
+            function Child() {}
+            
+            var some_var = 1;
+            
+            var module1 = {};
+            module1.data = {a: 1, b: 2};
+            var module2 = {};
+      
+      section
+        h2 네임스페이스 패턴
+        a.run_code(data-bespoke-run) RUN
+        pre.f08
+          code.language-javascript.
+            var MYAPP = {};
+            
+            MYAPP.Parent = function(){};
+            MYAPP.Child = function(){};
+            
+            MYAPP.some_var = 1;
+            
+            MYAPP.modules = {};
+            
+            MYAPP.modules.module1 = {};
+            MYAPP.modules.module1.data = {a: 1, b: 2};
+            MYAPP.modules.module2 = {};
+      
+      section
+        h2 여러개의 파일에서..
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            //방법 1
+            var MYAPP = {};
+            
+            //방법 2
+            if(typeof MYAPP === "undefined"){
+              var MYAPP = {};
+            }
+            
+            //방법 2-1
+            var MYAPP = MYAPP || {}''
+            
+      section
+        h2 실습 : 비공개로 만들기
+        table
+          tr
+            td
+              a.run_code(data-bespoke-run) RUN
+              pre.f07
+                code.language-javascript.
+                  // 객체생성 방법1
+                  var myModule = {
+                    name : 'literal',
+                    getName : function(){
+                      return this.name;
+                    }
+                  }
+                  console.log(myobj.name);
+            td(style="border-right:1px solid white")
+            td
+              a.run_code(data-bespoke-run) RUN
+              pre.f07
+                code.language-javascript.
+                  // 객체생성 방법2
+                  function Gadget(){
+                    this.name = 'new Func';
+                    this.getName = function (){
+                      return this.name;
+                    };
+                  }
+                  var toy = new Gadget();
+                  console.log(toy.name);
+      
+      section
+        h2 실습 : 비공개로 만들기 (A1)
+        table
+          tr
+            td
+              a.run_code(data-bespoke-run) RUN
+              pre.f07
+                code.language-javascript.
+                  // 객체생성 방법1
+                  var myModule = {
+                    name : 'literal',
+                    getName : function(){
+                      return this.name;
+                    }
+                  }
+                  console.log(myobj.name);
+            td(style="border-right:1px solid white")
+            td
+              a.run_code(data-bespoke-run) RUN
+              pre.f07
+                code.language-javascript.
+                  var myModule = (function(){
+                    var name = 'literal';
+                    return {
+                      getName : function(){
+                        return name;
+                      }
+                    }
+                  })();
+                  console.log(myModule.name);
+                  console.log(myModule.getName());
+      
+      section
+        h2 실습 : 비공개로 만들기 (A2)
+        table
+          tr
+            td
+              a.run_code(data-bespoke-run) RUN
+              pre.f07
+                code.language-javascript.
+                  // 객체생성 방법2
+                  function Gadget(){
+                    this.name = 'new Func';
+                    this.getName = function (){
+                      return this.name;
+                    };
+                  }
+                  var toy = new Gadget();
+                  console.log(toy.name);
+            td(style="border-right:1px solid white")
+            td
+              a.run_code(data-bespoke-run) RUN
+              pre.f07
+                code.language-javascript.
+                  function Gadget(){
+                    var name = 'new Func';
+                    this.getName = function (){
+                      return name;
+                    };
+                  }
+                  var toy = new Gadget();
+                  console.log(toy.name);    
+                  console.log(toy.getName());   
+    
+      section
+        h2 메모리를 생각해보면..
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            function Gadget(){
+              var name = 'new Func';
+              this.getName = function (){
+                return name;
+              };
+            }
+            var toy = new Gadget();
+            var toy2 = new Gadget();
+            var toy3 = new Gadget();
+            var toy4 = new Gadget();
+      
+      section
+        h2 new 할때마다 getName이 메모리에 할당된다.
+        h3 getName은 변하지 않고 모든 인스턴스가 똑같은 동작을 하는데?
+        pre.f07
+          code.language-javascript.
+            function Gadget(){
+              var name = 'new Func';
+              this.getName = function (){
+                return name;
+              };
+            }
+            var toy = new Gadget();
+            var toy2 = new Gadget();
+            var toy3 = new Gadget();
+            var toy4 = new Gadget();
+      
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre
         h2 prototype
-        
-        
+      
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            function MyObj(){
+              this.doSomething = function (){
+                console.log('done');
+              };
+            }
+            MyObj.prototype = {
+              doSomethingInProto : function (){
+                console.log('doneInProto');
+              }
+            }
+            
+            var obj = new MyObj();
+            obj.doSomething();
+            obj.doSomethingInProto();
+            
+            var obj2 = new MyObj();
+            
+      section
+        a.run_code(data-bespoke-run) RUN
+        pre.f07
+          code.language-javascript.
+            function MyObj(){
+              this.doSomething = function (){
+                console.log('done');
+              };
+            }
+            MyObj.prototype = {
+              doSomething : function(){
+                console.log('doneInProto');
+              }
+            }
+            
+            var obj = new MyObj();
+            obj.doSomething();
+            
+            var obj2 = new MyObj();
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='tips')
+        h1 그외
+        h2 (tip, 도구..)
+          
       section
         h2 strict mode
         h3 더 많은 예외를 발생시켜 <br/>코딩실수나 안전하지 않은 방식, <br/>혼란스러운 방식 원천 차단
-        
+      
+      section
+        h2 setInterval의 비밀?
+        a.run_code(data-bespoke-run) RUN
+        pre
+          code.language-javascript.
+            var cnt = 0;
+            setInterval(function(){
+              cnt++;
+              console.log(cnt);
+            },1000);
+      
+      section
+        ul
+          li  
+            a(href="http://underscorejs.org") underscore.js
+          li  
+            a(href="http://momentjs.com") moment.js
+          li
+            a(href="https://babeljs.io") babel.js (ES2015)
+          li
+            | 크롬 개발자 도구 
+            a(href="http://zziuni.github.io/blog/2013/10/12/chrome-devtools-revolutions-2013-in-korean/") I/O 2013
+            | , 
+            a(href="https://www.google.com/events/io/io14videos/81c71952-6cbf-e311-b297-00155d5066d7") I/O 2014 
+      
+      section
+        h1.bullet 감사합니다.
+        img.bullet(src="http://www.reactiongifs.com/wp-content/uploads/2013/10/thanks.gif")
       //- section()
       //-   h2 Named Route
       //-   h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
