@@ -11,8 +11,8 @@
   <body>
     <article>
       <section>
-        <h1>JavaScript Patterns</h1>
-        <h3>자바스크립트 초급, 그 이후</h3>
+        <h1>JavaScript 이해하기</h1>
+        <h3>: 자바스크립트 초급, 그 이후</h3>
         <h3>이종은</h3>
       </section>
       <section><img src="./images/jong.png" width="150px" class="circle"><br>
@@ -24,7 +24,7 @@
         </ul>
       </section>
       <section>
-        <h2 class="fa-4x">☝🏼 </h2>
+        <h2 class="fa-5x">☝ </h2>
         <h3>________ is the one programming language <br>to learn if you can learn only one</h3>
         <p class="comment-text">ref :<a href="http://www.itworld.com/article/2868413/javascript-is-the-one-programming-language-to-learn-if-you-can-learn-only-one.html"> itworld.com/article/2868413/</a>
         </p>
@@ -33,7 +33,7 @@
         <h1>JavaScript</h1>
       </section>
       <section>
-        <h2 class="fa-3x">😘 or 😠</h2>
+        <h2 class="fa-3x"><i class="ion-happy"></i> or <i class="ion-sad"></i></h2>
       </section>
       <section>
         <h2>JS가 싫은 이유</h2>
@@ -62,7 +62,7 @@
       <section>
         <h2 class="bullet">JS 사용법</h2>
         <h3 class="bullet">보다는</h3>
-        <h2 class="bullet">JS 이해 ☀️☀️</h2>
+        <h2 class="bullet">JS 이해 <i class="ion-android-sunny yellow"></i> <i class="ion-android-sunny yellow"></i></h2>
       </section>
       <section>
         <h2 class="bullet">왜 그런지 모르지만 저렇게 쓰면 되는구나<i style="position:absolute;left:280px;top:120px" class="fa fa-ban red fa-4x bullet"></i></h2>
@@ -74,22 +74,22 @@
         <h2 class="fa-3x"></h2>
         <h2>질문은 언제든지 환영</h2>
       </section>
-      <section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="content">
         <h2>얘깃거리</h2>
         <ul>
-          <li><a href="#wrapup">몸풀기</a></li>
-          <li><a href="#scope">스코프</a></li>
+          <li><a href="#warmup">몸풀기</a></li>
           <li><a href="#event">이벤트 루프</a></li>
-          <li><a href="#this">this</a></li>
+          <li><a href="#scope">스코프</a></li>
           <li><a href="#hoisting">hoisting</a></li>
+          <li><a href="#this">this</a></li>
+          <li><a href="#memory">메모리</a></li>
           <li><a href="#closure">클로져</a></li>
-          <li><a href="#callback">콜백 패턴</a></li>
           <li><a href="#oop">객체지향</a></li>
           <li><a href="#tips">기타 Tips</a></li>
         </ul>
       </section>
       <section data-bespoke-backdrop="emphatic" data-bespoke-hash="warmup" class="emphatic-text">
-        <h1 class="fa-3x">🏃</h1>
+        <h1 class="fa-3x"><i class="ion-ios-body"></i></h1>
         <h1>몸풀기</h1>
       </section>
       <section>
@@ -224,7 +224,7 @@ square(2);</code></pre>
       </section>
       <section>
         <h2>"Run-to-complete"</h2>
-        <h3>한번 시작하면 끝을 봐야한다!</h3>
+        <h3>한번 시작하면 끝을 봐야한다!<br/>중간에 의도적으로 sleep하고 다른 일을 할 수 없다.</h3>
       </section>
       <section>
         <h2 class="bullet">JS Runtime은 동시에 두가지 연산을 못해요?</h2>
@@ -707,7 +707,7 @@ if(typeof MYAPP === "undefined"){
 }
 
 //방법 2-1
-var MYAPP = MYAPP || {}''
+var MYAPP = MYAPP || {};
 </code></pre>
       </section>
       <section>
@@ -722,7 +722,7 @@ var myModule = {
     return this.name;
   }
 }
-console.log(myobj.name);</code></pre>
+console.log(myModule.name);</code></pre>
             </td>
             <td style="border-right:1px solid white"></td>
             <td><a data-bespoke-run class="run_code">RUN</a>
@@ -878,7 +878,9 @@ var obj2 = new MyObj();
       </section>
       <section>
         <h2>strict mode</h2>
+        <pre><code class="language-javascript">"use strict"</code></pre>
         <h3>더 많은 예외를 발생시켜 <br/>코딩실수나 안전하지 않은 방식, <br/>혼란스러운 방식 원천 차단</h3>
+        <p class="comment-text"><a href="http://blog.aliencube.org/ko/2014/01/02/reasons-behind-using-strict-mode-while-coding-javascript/">ref1</a>,  <a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">ref2: ejohn.org</a></p>
       </section>
       <section>
         <h2>setInterval의 비밀?</h2><a data-bespoke-run class="run_code">RUN</a>
@@ -895,6 +897,15 @@ setInterval(function(){
           <li> <a href="http://momentjs.com">moment.js</a></li>
           <li><a href="https://babeljs.io">babel.js (ES2015)</a></li>
           <li>크롬 개발자 도구 <a href="http://zziuni.github.io/blog/2013/10/12/chrome-devtools-revolutions-2013-in-korean/">I/O 2013</a>, <a href="https://www.google.com/events/io/io14videos/81c71952-6cbf-e311-b297-00155d5066d7">I/O 2014 </a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>참고 자료</h2>
+        <h3>인용에 해당할 경우는 각 페이지 하단 우측에 링크를 넣었습니다. <br/> 그외 참고자료는 아래와 같습니다.</h3>
+        <ul>
+          <li><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=38913750"> 자바스크리브 닌자 비급 (Screcrets of the JavaScript Ninja)</a></li>
+          <li><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=13680905"> 자바스크립트 코딩 기법과 핵심 패턴 (JavaScript Patterns)</a></li>
+          <li><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=28730459">   자바스크립트를 깨우치다</a></li>
         </ul>
       </section>
       <section>
