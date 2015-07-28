@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Advanced JS</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  </head>
+  <body>
+    <article>
+      <section>
+        <h1>JavaScript Patterns</h1>
+        <h3>자바스크립트 초급, 그 이후</h3>
+        <h3>이종은</h3>
+      </section>
+      <section><img src="./images/jong.png" width="150px" class="circle"><br>
+        <h2>이종은</h2>
+        <ul class="center no-bullet">
+          <li>Yo Studio</li>
+          <li><i class="ion-heart red"></i> JavaScript</li>
+          <li>Titanium (tidev.kr / NIPA open frontier)</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="fa-4x">☝🏼 </h2>
+        <h3>________ is the one programming language <br>to learn if you can learn only one</h3>
+        <p class="comment-text">ref :<a href="http://www.itworld.com/article/2868413/javascript-is-the-one-programming-language-to-learn-if-you-can-learn-only-one.html"> itworld.com/article/2868413/</a>
+        </p>
+      </section>
+      <section data-bespoke-backdrop="emphatic" class="emphatic-text">
+        <h1>JavaScript</h1>
+      </section>
+      <section>
+        <h2 class="fa-3x">😘 or 😠</h2>
+      </section>
+      <section>
+        <h2>JS가 싫은 이유</h2>
+        <ul>
+          <li>구린 부분이 있다</li>
+          <li>DOM은 형편없다</li>
+          <li>Java, C#, C++, Phython, Ruby.. 가 아니다</li>
+          <li>그런데도 많이 쓰인다</li>
+        </ul>
+        <p class="comment-text"><a href="https://www.youtube.com/watch?v=lTWGoL1N-Kc">ref : Douglas Crockford: Really. JavaScript.</a></p>
+      </section>
+      <section>
+        <h2>The World's Most Misunderstood Programming Language</h2>
+      </section>
+      <section><img src="./images/youdontknow.jpg" width="300px"></section>
+      <section><img src="./images/idontknow.png" width="400px">
+        <h3>Kyle Simpson</h3>
+      </section>
+      <section>
+        <h2 class="bullet">오늘은<br><span class="bullet">애매한 것을 깨우치는 시간</span></h2>
+      </section>
+      <section>
+        <h1 class="bullet">JS는 어떻게 동작하나요?</h1>
+        <h3 class="bullet">누구도 알려주지 않았다</h3>
+      </section>
+      <section>
+        <h2 class="bullet">JS 사용법</h2>
+        <h3 class="bullet">보다는</h3>
+        <h2 class="bullet">JS 이해 ☀️☀️</h2>
+      </section>
+      <section>
+        <h2 class="bullet">왜 그런지 모르지만 저렇게 쓰면 되는구나<i style="position:absolute;left:280px;top:120px" class="fa fa-ban red fa-4x bullet"></i></h2>
+        <h1> </h1>
+        <h1>  </h1>
+        <h2 class="bullet">아! 그렇기 때문에 저렇게 써야 하는구나!</h2>
+      </section>
+      <section>
+        <h2 class="fa-3x"></h2>
+        <h2>질문은 언제든지 환영</h2>
+      </section>
+      <section>
+        <h2>얘깃거리</h2>
+        <ul>
+          <li><a href="#wrapup">몸풀기</a></li>
+          <li><a href="#scope">스코프</a></li>
+          <li><a href="#event">이벤트 루프</a></li>
+          <li><a href="#this">this</a></li>
+          <li><a href="#hoisting">hoisting</a></li>
+          <li><a href="#closure">클로져</a></li>
+          <li><a href="#callback">콜백 패턴</a></li>
+          <li><a href="#oop">객체지향</a></li>
+          <li><a href="#tips">기타 Tips</a></li>
+        </ul>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="warmup" class="emphatic-text">
+        <h1 class="fa-3x">🏃</h1>
+        <h1>몸풀기</h1>
+      </section>
+      <section>
+        <h2 class="bullet">JS는 객체지향 언어다?</h2>
+        <h3 class="bullet">네! 5개 빼고 전부 객체이다.</h3>
+      </section>
+      <section>
+        <h2 class="bullet">객체</h2>
+        <h3 class="bullet">key - value 쌍의 모음</h3><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="bullet"><code class="language-javascript">var obj = {
+  title : "Advanced JS",
+  attendee : 30,
+  isBad : function(){
+    return false;
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>원시값</h2>
+        <h3>primitive type</h3>
+        <ul>
+          <li>string</li>
+          <li>number</li>
+          <li>boolean</li>
+          <li>null</li>
+          <li>undefined</li>
+        </ul><br class="bullet">
+      </section>
+      <section><span class="bullet"></span>
+        <h2 class="bullet">Primitive Wrapper</h2>
+        <p class="f07 bullet"><i class="ion-android-warning red"></i> string, number, boolean은 primitive wrapper를 통해 쉽게 객체로 변환</p><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">"I am a boy".length;
+(3).toFixed(2);
+true.toString();
+
+</code></pre>
+      </section>
+      <section>
+        <h2>복사</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var p = 1;
+var copyOfP = p;
+p = 3;
+console.log(copyOfP);
+
+var myObject = {};
+var copyOfMyObject = myObject;
+myObject.foo = 'bar';
+console.log(copyOfMyObject.foo);
+
+</code></pre>
+      </section>
+      <section>
+        <h2>비교 연산자 == vs ===</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="line-numbers f08"><code class="language-javascript">var one= 1, oneString = '1' , t = true;
+
+console.log(one == oneString);
+console.log(one == t);
+console.log(oneString == t);
+
+console.log(one === oneString);
+console.log(one === t);
+console.log(oneString === t);</code></pre>
+      </section>
+      <section>
+        <h2>객체 속성 접근방법</h2>
+        <pre class="f07"><code class="language-javascript">var obj = {
+    name : 'MyObject'
+};
+var a = 'name';
+console.log(obj.name);
+console.log(obj["name"]);
+console.log(obj[a]);</code></pre>
+      </section>
+      <section>
+        <h2>여는 중괄호의 위치</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">function f1(){
+  return {
+    name: 'jong'
+  };
+}
+
+function f2(){
+  return 
+  {
+    name: 'jong'
+  };
+}
+
+console.log(f1());
+console.log(f2());
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="event" class="emphatic-text">
+        <h1>이벤트 루프</h1>
+        <h2>Event Loop</h2>
+      </section>
+      <section>
+        <h2 class="bullet">JS는 어떻게 동작하는가? <br/>(Runtime Concept)</h2>
+        <h3 class="bullet">이론적인 모델, 실제로 구현은 엔진에 따라 다르게 많이 최적화되어 있음</h3>
+      </section>
+      <section><img src="./images/eventloop.svg" width="500px">
+        <p class="comment-text"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/EventLoop">ref: dev.mozilla.org</a></p>
+      </section>
+      <section>
+        <h2></h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">function multiply(a,b){
+  return a*b;
+}
+
+function square(x){
+  return multiply(x,x);
+}
+
+square(2);</code></pre>
+            </td>
+            <td style="border-right:1px solid white;width:20px"></td>
+            <td style="width:20px"></td>
+            <td>
+              <!--img(src="./images/call_stack.svg")--><img src="./images/eventloop_blank.svg">
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>call stack</h2>
+        <h3>one thread == one call stack == one thing at a time</h3>
+        <p class="comment-text"><a href="http://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html#transcript">2014.jsconf.eu philip</a></p>
+      </section>
+      <section>
+        <h2>"Run-to-complete"</h2>
+        <h3>한번 시작하면 끝을 봐야한다!</h3>
+      </section>
+      <section>
+        <h2 class="bullet">JS Runtime은 동시에 두가지 연산을 못해요?</h2>
+        <h1 class="bullet">네, 정말입니다.</h1>
+      </section>
+      <section>
+        <h2>이벤트 핸들러</h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f06"><code class="language-javascript">document.getElementById('myBtn').onclick = function(){
+  console.log('myBtn Click');
+};
+
+function g(){
+  console.log('g');
+}
+
+g();
+</code></pre>
+            </td>
+            <td style="border-right:1px solid white;width:20px"></td>
+            <td style="width:20px"></td>
+            <td><img src="./images/eventloop_blank.svg"></td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>브라우저가 반응 없다가<br/>갑자기 몰아서 응답할때는?</h2>
+      </section>
+      <section>
+        <h2>한동안 방응 없는 경우</h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f06"><code class="language-javascript">document.getElementById('myBtn').onclick = function(){
+  console.log('myBtn Click');
+};
+
+function g(){ 
+  doSomething(); // 엄청 오래 걸리는 작업
+}
+
+g();
+</code></pre>
+            </td>
+            <td style="border-right:1px solid white;width:20px"></td>
+            <td style="width:20px"></td>
+            <td><img src="./images/eventloop_blank.svg"></td>
+          </tr>
+        </table>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">setTimeout(function(){
+
+},x)</code></pre>
+        <h3 class="bullet">x초 후 함수를 실행</h3>
+      </section>
+      <section>
+        <h2>타이머</h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">function f(){
+  console.log('f - done');
+}
+
+function g(){
+  setTimeout(function(){
+    console.log('g - timeout')
+  },3000);
+  f();
+}
+
+g();</code></pre>
+            </td>
+            <td style="border-right:1px solid white;width:20px"></td>
+            <td style="width:20px"></td>
+            <td><img src="./images/eventloop_blank.svg"></td>
+          </tr>
+        </table>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">setTimeout(function(){
+
+},x)</code></pre>
+        <h3 class="bullet">x초 후 함수를 실행<br/></h3>
+        <h3 class="bullet">하는 것이 아니라 x초 후에 Queue에 넣음</h3>
+      </section>
+      <section>
+        <h2>HttpClient도 Block?</h2>
+      </section>
+      <section>
+        <h2></h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">function f(){
+  console.log('f - done');
+}
+
+function g(){
+  $.ajax({
+    url: "test.html"
+  }).done(function() {
+    console.log('g - ajax - done')
+  });
+  f();
+}
+
+g();</code></pre>
+            </td>
+            <td style="border-right:1px solid white;width:20px"></td>
+            <td style="width:20px"></td>
+            <td><img src="./images/eventloop_blank.svg"></td>
+          </tr>
+        </table>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="scope" class="emphatic-text">
+        <h1>스코프</h1>
+        <h2>(scope)</h2>
+      </section>
+      <section>
+        <h2>스코프 (Scope)?</h2>
+        <ul class="bullet">
+          <li class="bullet"> 유효범위</li>
+          <li class="bullet"> 무언가를 찾을 때 들여다 보는 곳</li>
+        </ul>
+      </section>
+      <section>
+        <h2>전역 변수, 지역 변수</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">var g = 3;
+function f(){
+  var h = 4;
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>'var' scope 결정자</h2>
+      </section>
+      <section>
+        <h2>단지 Function scope    </h2>
+      </section>
+      <section>
+        <h2>어떻게 생겼는지 그려봅시다.</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">var msg = 'global';
+var gmsg = 'wow';
+function f(){
+  var msg = 'local';
+  return msg + gmsg;
+}
+f();
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="hoisting" class="emphatic-text">
+        <h1>호이스팅</h1>
+        <h2>(Hoisting)</h2>
+      </section>
+      <section>
+        <h2>기명함수의 호이스팅</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">f();
+function f(){
+  console.log('please');
+};
+</code></pre>
+      </section>
+      <section>
+        <h2>익명함수의 호이스팅</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">f();
+var f = function (){
+  console.log('please');
+};
+</code></pre>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">function f(){
+  console.log(a);
+  return;
+}
+</code></pre>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">function f(){
+  console.log(a);
+  return;
+  var a=3;
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>선언문 var은 항상 상단에 모아라</h2>
+      </section>
+      <section>
+        <h2>Q. global? local?</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">function foo() {
+  var a = b = 0;
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Scope Chain</h2>
+        <h1><i class="fa-4x ion-link"></i></h1>
+      </section>
+      <section>
+        <h2>gmsg는 어떻게 찾은거지?</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var msg = 'global';
+var gmsg = 'wow';
+function f(){
+  var msg = 'local';
+  return msg + gmsg;
+}
+f();
+</code></pre>
+      </section>
+      <section>
+        <h2>찾는데 걸리는 시간</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var msg = 'global';
+var gmsg = 'wow';
+function f(){
+  var msg = 'local';
+  for(var i=0;i<100000;i++){
+    msg+=gmsg;
+  }
+  return msg;
+}
+f();
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="this" class="emphatic-text">
+        <h2>this</h2>
+        <h3>(누구냐 넌?)</h3>
+      </section>
+      <section>
+        <ul>
+          <li>scope에 자동으로 들어가는 변수</li>
+          <li>해당 함수를 실행시킨 Object </li>
+        </ul>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">console.log(this);
+</code></pre>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">function(){
+  console.log(this);
+}
+</code></pre>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var value = 'global';
+var obj = {
+  value : 'local',
+  foo : function(){
+    console.log( this.value );
+  }
+}
+obj.foo();
+</code></pre>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">function MyObj(){
+  console.log(this);
+}
+var obj = new MyObj();
+</code></pre>
+      </section>
+      <section>
+        <h2>Q. 결과는?</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var value = 'global';
+var obj = {
+  value : 'local',
+  foo : function(){
+    console.log( this.value );
+  }
+}
+var foo2 = obj.foo;
+foo2();
+</code></pre>
+      </section>
+      <section>
+        <h2>예외 : call, apply </h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var value = 'global';
+var obj = {
+  value : 'local',
+  foo : function(){
+    console.log( this.value );
+  }
+}
+var foo2 = obj.foo;
+foo2.call(obj);
+foo2.apply(obj);
+
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="memory" class="emphatic-text">
+        <h1>메모리 GC</h1>
+      </section>
+      <section>
+        <h2>메모리 관리 기본 3단계</h2>
+        <ol class="bullet">
+          <li class="bullet">필요할 때 할당한다.</li>
+          <li class="bullet">사용한다. (읽기, 쓰기)</li>
+          <li class="bullet">필요없어지면 해제한다.</li>
+        </ol>
+        <p class="comment-text"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management">MDN</a></p>
+      </section>
+      <section>
+        <h2>JS gabage collector</h2>
+        <ul class="bullet">
+          <li class="bullet">우리가 임의로 동작시킬 수 없다</li>
+          <li class="bullet">브라우저가 알아서 한다</li>
+        </ul><img src="./images/fig2.jpg" class="bullet">
+        <p class="comment-text"><a href="http://www.html5rocks.com/ko/tutorials/speed/static-mem-pools/">ref: html5rocks</a></p>
+      </section>
+      <section>
+        <h2>gabage collector 동작 방식</h2>
+        <ul class="bullet">
+          <li class="bullet">ref count</li>
+          <li class="bullet">mark and swipe</li>
+        </ul>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f09"><code class="language-javascript">function f(){
+  var arr = new Array(1000);
+}
+f();
+</code></pre>
+      </section>
+      <section>
+        <h2>ref count의 한계</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f08"><code class="language-javascript">function f(){
+  var o = {};
+  var o2 = {};
+  o.a = o2; 
+  o2.a = o;
+  
+  return "azerty";
+}
+
+f();
+</code></pre>
+      </section>
+      <section>
+        <h2>mark and swipe</h2>
+        <h3>닿을 수 없는 오브젝트 = 더 이상 필요 없는 오브젝트</h3>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="closure" class="emphatic-text">
+        <h1>클로저</h1>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var outerValue = 'ninja';
+var later;
+
+function outerFunction(){
+  var innerValue = 'samurai';
+  
+  function innerFunction(){
+    console.log(innnerValue);
+    console.log(outerValue);
+  }
+  
+  later = innerFunction;
+}
+
+outerFunction();
+later();
+</code></pre>
+      </section>
+      <section>
+        <h2 class="bullet">실습 1. 손으로 그려보면서 결과 예측</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">var nodes = document.getElementsByTagName('button');
+for (var i = 0; i < nodes.length; i++) {
+   nodes[i].addEventListener('click', function() {
+      console.log('You clicked element #' + i);
+   });
+}
+</code></pre>
+        <h2 class="bullet">실습 2. 정상적으로 동작하도록 </h2>
+      </section>
+      <section>
+        <h2>callback이란?</h2>
+      </section>
+      <section>
+        <h2>callback HELL</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">step1(function (value1) {
+  step2(value1, function(value2) {
+      step3(value2, function(value3) {
+          step4(value3, function(value4) {
+              // value4를 다루는 작업 수행
+          });
+      });
+  });</code>});</pre>
+      </section>
+      <section>
+        <h2>promise</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">Q.fcall(promisedStep1)
+.then(promisedStep2)
+.then(promisedStep3)
+.then(promisedStep4)
+.then(function (value4) {
+    // value4를 다루는 작업 수행
+})
+.catch(function (error) {
+    // 위 step에서 발생하는 모든 에러 처리
+})
+.done();
+</code></pre>
+      </section>
+      <section>
+        <h2>promise - Q</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f04"><code class="language-javascript">function requestOkText(url) {
+    return Q.Promise(function(resolve, reject, notify) {
+        var request = new XMLHttpRequest();
+        
+        request.open("GET", url, true);
+        request.onload = onload;
+        request.onerror = onerror;
+        request.onprogress = onprogress;
+        request.send();
+        
+        function onload() {
+            if (request.status === 200) {
+                resolve(request.responseText);
+            } else {
+                reject(new Error("Status code was " + request.status));
+            }
+        }
+        
+        function onerror() {
+            reject(new Error("Can't XHR " + JSON.stringify(url)));
+        }
+        
+        function onprogress(event) {
+            notify(event.loaded / event.total);
+        }
+    });
+}</code></pre>
+        <p class="comment-text"><a href="http://documentup.com/kriskowal/q/">ref: Q</a></p>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="oop" class="emphatic-text">
+        <h1>Object Oriented</h1>
+        <h2>(JS로 클래스)</h2>
+      </section>
+      <section>
+        <h2>글로벌을 더립히지 마라</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f08"><code class="language-javascript">function Parent() {}
+function Child() {}
+
+var some_var = 1;
+
+var module1 = {};
+module1.data = {a: 1, b: 2};
+var module2 = {};
+</code></pre>
+      </section>
+      <section>
+        <h2>네임스페이스 패턴</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f08"><code class="language-javascript">var MYAPP = {};
+
+MYAPP.Parent = function(){};
+MYAPP.Child = function(){};
+
+MYAPP.some_var = 1;
+
+MYAPP.modules = {};
+
+MYAPP.modules.module1 = {};
+MYAPP.modules.module1.data = {a: 1, b: 2};
+MYAPP.modules.module2 = {};
+</code></pre>
+      </section>
+      <section>
+        <h2>여러개의 파일에서..</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">//방법 1
+var MYAPP = {};
+
+//방법 2
+if(typeof MYAPP === "undefined"){
+  var MYAPP = {};
+}
+
+//방법 2-1
+var MYAPP = MYAPP || {}''
+</code></pre>
+      </section>
+      <section>
+        <h2>실습 : 비공개로 만들기</h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">// 객체생성 방법1
+var myModule = {
+  name : 'literal',
+  getName : function(){
+    return this.name;
+  }
+}
+console.log(myobj.name);</code></pre>
+            </td>
+            <td style="border-right:1px solid white"></td>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">// 객체생성 방법2
+function Gadget(){
+  this.name = 'new Func';
+  this.getName = function (){
+    return this.name;
+  };
+}
+var toy = new Gadget();
+console.log(toy.name);
+</code></pre>
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>실습 : 비공개로 만들기 (A1)</h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">// 객체생성 방법1
+var myModule = {
+  name : 'literal',
+  getName : function(){
+    return this.name;
+  }
+}
+console.log(myobj.name);</code></pre>
+            </td>
+            <td style="border-right:1px solid white"></td>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">var myModule = (function(){
+  var name = 'literal';
+  return {
+    getName : function(){
+      return name;
+    }
+  }
+})();
+console.log(myModule.name);
+console.log(myModule.getName());
+</code></pre>
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>실습 : 비공개로 만들기 (A2)</h2>
+        <table>
+          <tr>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">// 객체생성 방법2
+function Gadget(){
+  this.name = 'new Func';
+  this.getName = function (){
+    return this.name;
+  };
+}
+var toy = new Gadget();
+console.log(toy.name);</code></pre>
+            </td>
+            <td style="border-right:1px solid white"></td>
+            <td><a data-bespoke-run class="run_code">RUN</a>
+              <pre class="f07"><code class="language-javascript">function Gadget(){
+  var name = 'new Func';
+  this.getName = function (){
+    return name;
+  };
+}
+var toy = new Gadget();
+console.log(toy.name);    
+console.log(toy.getName());   
+</code></pre>
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>메모리를 생각해보면..</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">function Gadget(){
+  var name = 'new Func';
+  this.getName = function (){
+    return name;
+  };
+}
+var toy = new Gadget();
+var toy2 = new Gadget();
+var toy3 = new Gadget();
+var toy4 = new Gadget();
+</code></pre>
+      </section>
+      <section>
+        <h2>new 할때마다 getName이 메모리에 할당된다.</h2>
+        <h3>getName은 변하지 않고 모든 인스턴스가 똑같은 동작을 하는데?</h3>
+        <pre class="f07"><code class="language-javascript">function Gadget(){
+  var name = 'new Func';
+  this.getName = function (){
+    return name;
+  };
+}
+var toy = new Gadget();
+var toy2 = new Gadget();
+var toy3 = new Gadget();
+var toy4 = new Gadget();
+</code></pre>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre></pre>
+        <h2>prototype</h2>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">function MyObj(){
+  this.doSomething = function (){
+    console.log('done');
+  };
+}
+MyObj.prototype = {
+  doSomethingInProto : function (){
+    console.log('doneInProto');
+  }
+}
+
+var obj = new MyObj();
+obj.doSomething();
+obj.doSomethingInProto();
+
+var obj2 = new MyObj();
+</code></pre>
+      </section>
+      <section><a data-bespoke-run class="run_code">RUN</a>
+        <pre class="f07"><code class="language-javascript">function MyObj(){
+  this.doSomething = function (){
+    console.log('done');
+  };
+}
+MyObj.prototype = {
+  doSomething : function(){
+    console.log('doneInProto');
+  }
+}
+
+var obj = new MyObj();
+obj.doSomething();
+
+var obj2 = new MyObj();
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="emphatic" data-bespoke-hash="tips" class="emphatic-text">
+        <h1>그외</h1>
+        <h2>(tip, 도구..)</h2>
+      </section>
+      <section>
+        <h2>strict mode</h2>
+        <h3>더 많은 예외를 발생시켜 <br/>코딩실수나 안전하지 않은 방식, <br/>혼란스러운 방식 원천 차단</h3>
+      </section>
+      <section>
+        <h2>setInterval의 비밀?</h2><a data-bespoke-run class="run_code">RUN</a>
+        <pre><code class="language-javascript">var cnt = 0;
+setInterval(function(){
+  cnt++;
+  console.log(cnt);
+},1000);
+</code></pre>
+      </section>
+      <section>
+        <ul>
+          <li> <a href="http://underscorejs.org">underscore.js</a></li>
+          <li> <a href="http://momentjs.com">moment.js</a></li>
+          <li><a href="https://babeljs.io">babel.js (ES2015)</a></li>
+          <li>크롬 개발자 도구 <a href="http://zziuni.github.io/blog/2013/10/12/chrome-devtools-revolutions-2013-in-korean/">I/O 2013</a>, <a href="https://www.google.com/events/io/io14videos/81c71952-6cbf-e311-b297-00155d5066d7">I/O 2014 </a></li>
+        </ul>
+      </section>
+      <section>
+        <h1 class="bullet">감사합니다.</h1><img src="http://www.reactiongifs.com/wp-content/uploads/2013/10/thanks.gif" class="bullet">
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
