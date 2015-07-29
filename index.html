@@ -33,7 +33,7 @@
         <h1>JavaScript</h1>
       </section>
       <section>
-        <h2 class="fa-3x"><i class="ion-happy"></i> or <i class="ion-sad"></i></h2>
+        <h2 class="fa-3x"><i class="ion-happy"></i> or <i class="ion-sad-outline"></i></h2>
       </section>
       <section>
         <h2>JS가 싫은 이유</h2>
@@ -379,12 +379,40 @@ function f(){
 f();
 </code></pre>
       </section>
+      <section>
+        <h2>즉시 실행 함수</h2>
+        <pre><code class="language-javascript">(function(){
+
+})();
+</code></pre>
+      </section>
+      <section>
+        <h2>인자 전달</h2>
+        <pre><code class="language-javascript">// 방법 1
+(function(x){
+
+})(a)
+</code></pre>
+      </section>
+      <section>
+        <h2>Return 값</h2>
+        <pre><code class="language-javascript">// 방법 1
+var result = (function(){
+  return 4;
+})();
+
+// 방법 2
+var result = function(){
+  return 4;
+}();</code></pre>
+        <h3>방법2는 뒤에 괄호를 눈여겨 보지 않으면 오해의 소지가 있다.</h3>
+      </section>
       <section data-bespoke-backdrop="emphatic" data-bespoke-hash="hoisting" class="emphatic-text">
         <h1>호이스팅</h1>
         <h2>(Hoisting)</h2>
       </section>
       <section>
-        <h2>기명함수의 호이스팅</h2><a data-bespoke-run class="run_code">RUN</a>
+        <h2>함수 선언문</h2><a data-bespoke-run class="run_code">RUN</a>
         <pre><code class="language-javascript">f();
 function f(){
   console.log('please');
@@ -392,7 +420,7 @@ function f(){
 </code></pre>
       </section>
       <section>
-        <h2>익명함수의 호이스팅</h2><a data-bespoke-run class="run_code">RUN</a>
+        <h2>익명 함수 표현식</h2><a data-bespoke-run class="run_code">RUN</a>
         <pre><code class="language-javascript">f();
 var f = function (){
   console.log('please');
@@ -416,6 +444,19 @@ var f = function (){
       </section>
       <section>
         <h2>선언문 var은 항상 상단에 모아라</h2>
+      </section>
+      <section>
+        <h2>선언문 vs. 표현식    </h2>
+        <pre><code class="language-javascript">// 기함수 선언문
+function me(){
+
+}
+
+// 기명 함수 표현식
+var a = function me(){
+
+};
+</code></pre>
       </section>
       <section>
         <h2>Q. global? local?</h2><a data-bespoke-run class="run_code">RUN</a>
@@ -573,6 +614,7 @@ f();
       </section>
       <section data-bespoke-backdrop="emphatic" data-bespoke-hash="closure" class="emphatic-text">
         <h1>클로저</h1>
+        <h2>(closure)</h2>
       </section>
       <section><a data-bespoke-run class="run_code">RUN</a>
         <pre class="f07"><code class="language-javascript">var outerValue = 'ninja';
@@ -605,7 +647,27 @@ for (var i = 0; i < nodes.length; i++) {
         <h2 class="bullet">실습 2. 정상적으로 동작하도록 </h2>
       </section>
       <section>
-        <h2>callback이란?</h2>
+        <h2>callback 패턴</h2>
+      </section>
+      <section>
+        <h2>함수를 다른 함수의 인자로 전달 할 수 있다?</h2>
+        <h3>자바스립트에서 함수는 1급 클래스이다.</h3>
+      </section>
+      <section>
+        <pre><code class="language-javascript">function find(callback){
+  var found;
+  // 무언가를 찾아서 found에 저장
+  if(found){
+    callback(found);
+  }
+}
+
+function hide(node){
+  node.style.display= "none";
+}
+
+find(hide);
+</code></pre>
       </section>
       <section>
         <h2>callback HELL</h2><a data-bespoke-run class="run_code">RUN</a>
@@ -616,7 +678,9 @@ for (var i = 0; i < nodes.length; i++) {
               // value4를 다루는 작업 수행
           });
       });
-  });</code>});</pre>
+  });
+});
+</code></pre>
       </section>
       <section>
         <h2>promise</h2><a data-bespoke-run class="run_code">RUN</a>
