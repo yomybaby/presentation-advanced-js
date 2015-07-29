@@ -31,7 +31,7 @@ html
       section
         //- img(src="./images/one_frankieleon.jpg",width="500px")
         //- 딱 하나만 배우겠다면 배워야 하는 하나
-        h2.fa-5x☝ 
+        h2.fa-5x ☝ 
         h3 ________ is the one programming language 
           br
           | to learn if you can learn only one
@@ -49,7 +49,7 @@ html
         h2.fa-3x
           i.ion-happy
           |  or 
-          i.ion-sad
+          i.ion-sad-outline
         
       section
         h2 JS가 싫은 이유
@@ -118,8 +118,6 @@ html
             a(href="#closure") 클로져
           li 
             a(href="#oop") 객체지향
-          //- li 
-          //-   a(href="#callback") 콜백 패턴
           li 
             a(href="#tips") 기타 Tips
       
@@ -484,13 +482,45 @@ html
               return msg + gmsg;
             }
             f();
+            
+      section
+        h2 즉시 실행 함수
+        pre
+          code.language-javascript.
+            (function(){
+              
+            })();
       
+      section
+        h2 인자 전달
+        pre 
+          code.language-javascript.
+            // 방법 1
+            (function(x){
+            
+            })(a)
+            
+      section
+        h2 Return 값
+        pre 
+          code.language-javascript.
+            // 방법 1
+            var result = (function(){
+              return 4;
+            })();
+            
+            // 방법 2
+            var result = function(){
+              return 4;
+            }();
+        h3 방법2는 뒤에 괄호를 눈여겨 보지 않으면 오해의 소지가 있다.
+            
       section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='hoisting')
         h1 호이스팅
         h2 (Hoisting)
         
       section
-        h2 기명함수의 호이스팅
+        h2 함수 선언문
         a.run_code(data-bespoke-run) RUN
         pre 
           code.language-javascript.
@@ -500,7 +530,7 @@ html
             };
             
       section
-        h2 익명함수의 호이스팅
+        h2 익명 함수 표현식
         a.run_code(data-bespoke-run) RUN
         pre
           code.language-javascript.
@@ -530,7 +560,21 @@ html
       
       section
         h2 선언문 var은 항상 상단에 모아라
-        
+      
+      section
+        h2 선언문 vs. 표현식    
+        pre
+          code.language-javascript.
+            // 기함수 선언문
+            function me(){
+            
+            }
+            
+            // 기명 함수 표현식
+            var a = function me(){
+            
+            };
+              
       section
         h2 Q. global? local?
         a.run_code(data-bespoke-run) RUN
@@ -706,11 +750,10 @@ html
       section
         h2 mark and swipe
         h3 닿을 수 없는 오브젝트 = 더 이상 필요 없는 오브젝트
-        
-      
       
       section.emphatic-text(data-bespoke-backdrop='emphatic',data-bespoke-hash='closure')
         h1 클로저
+        h2 (closure)
         
       section
         a.run_code(data-bespoke-run) RUN
@@ -748,8 +791,29 @@ html
         h2.bullet 실습 2. 정상적으로 동작하도록 
       
       section
-        h2 callback이란?
+        h2 callback 패턴
       
+      section
+        h2 함수를 다른 함수의 인자로 전달 할 수 있다?
+        h3 자바스립트에서 함수는 1급 클래스이다.
+      
+      section
+        pre
+          code.language-javascript.
+            function find(callback){
+              var found;
+              // 무언가를 찾아서 found에 저장
+              if(found){
+                callback(found);
+              }
+            }
+            
+            function hide(node){
+              node.style.display= "none";
+            }
+            
+            find(hide);
+            
       section
         h2 callback HELL
         a.run_code(data-bespoke-run) RUN
@@ -763,7 +827,7 @@ html
                       });
                   });
               });
-          });
+            });
       
       section
         h2 promise
@@ -997,6 +1061,7 @@ html
             var toy4 = new Gadget();
       
       section
+        //- 이 부분은 더 자세히 추가하면 좋을 듯 (Javascript patterns 6장 참고하면 좋을 듯)
         a.run_code(data-bespoke-run) RUN
         pre
         h2 prototype
@@ -1049,7 +1114,7 @@ html
       section
         h2 strict mode
         pre
-          code.language-javascript
+          code.language-javascript.
             "use strict"
         h3 더 많은 예외를 발생시켜 <br/>코딩실수나 안전하지 않은 방식, <br/>혼란스러운 방식 원천 차단
         p.comment-text
