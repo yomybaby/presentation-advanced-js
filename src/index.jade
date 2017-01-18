@@ -312,7 +312,7 @@ html
       
       section
         h2 "Run-to-complete"
-        h3 한번 시작하면 끝을 봐야한다!<br/>중간에 의도적으로 sleep하고 다른 일을 할 수 없다.
+        h3 한번 시작하면 끝을 봐야한다!<br/>중간에 의도적으로 sleep하거나 다른 일을 할 수 없다.
         
       section
         h2.bullet JS Runtime은 동시에 두가지 연산을 못해요?
@@ -402,6 +402,32 @@ html
             td(style="width:20px")
             td
               img(src="./images/eventloop_blank.svg")
+      
+      section
+        h2 타이머
+        table
+          tr
+            td
+              a.run_code(data-bespoke-run) RUN
+              pre.f07
+                code.language-javascript.
+                  function f(){
+                    console.log('f - done');
+                  }
+                  
+                  function g(){
+                    setTimeout(function(){
+                      console.log('g - timeout')
+                    },0);
+                    f();
+                  }
+                  
+                  g();
+            td(style="border-right:1px solid white;width:20px")
+            td(style="width:20px")
+            td
+              img(src="./images/eventloop_blank.svg")
+                
       section
         a.run_code(data-bespoke-run) RUN
         pre.f07
